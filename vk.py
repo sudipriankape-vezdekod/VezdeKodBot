@@ -1,6 +1,6 @@
 import vk_api
 import os
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 from photos import get_all_photos, save_new_img
 from img_data import imgs
 
