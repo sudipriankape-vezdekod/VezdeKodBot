@@ -1,4 +1,4 @@
-from vk import send_message
+#from vk import send_message
 
 menus = {}
 
@@ -30,7 +30,8 @@ class Menu:
         self.used_photos = []
 
     def on_message(self, _):
-        send_message(self.user_id, "Неизвестная команда")
+        pass
+        #send_message(self.user_id, "Неизвестная команда")
 
     def load_state(self, state):
         for k, v in state.items():

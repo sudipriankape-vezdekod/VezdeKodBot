@@ -17,6 +17,7 @@ class MainMenu(Menu):
 
     def on_message(self, msg):
         if msg == config.startButton.lower():
+            print(get_randoms(self.user_id, 5))
             send_photos(self.user_id, get_randoms(self.user_id, 5))
             #set_user_menu(self.user_id, StartMenu(self.user_id))
         else:

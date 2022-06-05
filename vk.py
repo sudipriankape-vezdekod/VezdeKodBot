@@ -2,6 +2,7 @@ import vk_api
 import os
 from dotenv import load_dotenv
 from photos import get_all_photos, save_new_img
+from img_data import imgs
 
 
 load_dotenv()
@@ -35,6 +36,8 @@ def send_keyboard(user_id, keyboard=None):
 
 def upload_photos():
     for photo_dir in get_all_photos():
+        if photo_dir in imgs.keys():
+            continue
         print(photo_dir)
         photo = upload.photo_messages(photo_dir)
         owner_id = photo[0]['owner_id']
@@ -44,15 +47,10 @@ def upload_photos():
         save_new_img(photo_dir, attachment)
 
 
-def send_photos(user_id, photos_dirs):
+def send_photos(user_id, imgs):
     attachments = ''
-    for photo_dir in photos_dirs:
-        photo = upload.photo_messages(photo_dir)
-        owner_id = photo[0]['owner_id']
-        photo_id = photo[0]['id']
-        access_key = photo[0]['access_key']
-        attachment = f'photo{owner_id}_{photo_id}_{access_key}'
-        attachments += attachment + ','
+    for img in imgs:
+        attachments += img + ','
     request = {
         "user_id": int(user_id),
         "random_id": 0,

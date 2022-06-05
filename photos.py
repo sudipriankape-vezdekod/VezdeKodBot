@@ -1,11 +1,10 @@
 import os
 from random import choice
-from img_data import img, save_imgs
+from img_data import imgs, save_imgs
 from user import get_used_photos, set_used_photos
 
-print(os.listdir())
+
 photos_dirs = os.listdir("photos/")
-last_photos_dirs = photos_dirs.copy()
 
 
 def get_all_photos():
@@ -17,17 +16,18 @@ def save_new_img(photo, img):
         "name": img,
         "keywords": []
     }
-    img[photo] = photo_img
+    imgs[photo] = photo_img
     save_imgs()
 
 
 def get_randoms(user_id, number):
     random_photos = []
-    total_last = len(photos_dirs) - len(get_used_photos(user_id))
+    total_last = len(imgs) - len(get_used_photos(user_id))
     if number > total_last:
         number = total_last
     while len(random_photos) != number:
-        random_photo = choice(photos_dirs)
+        random_photo = choice(list(imgs.items()))
+        random_photo = random_photo[1]["name"]
         if random_photo in get_used_photos(user_id):
             continue
         random_photos.append(random_photo)
