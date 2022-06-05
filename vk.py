@@ -5,7 +5,7 @@ from photos import get_all_photos, save_new_img
 from img_data import imgs
 
 
-load_dotenv()
+# load_dotenv()
 API_TOKEN = os.getenv("API_TOKEN")
 
 vk = vk_api.VkApi(token=API_TOKEN)
