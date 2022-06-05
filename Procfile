@@ -1,1 +1,1 @@
-web: API_TOKEN=51e76c0a6d8008baefec2638f4eeab5fc5f9ef3f9f0062fccfce0a722b7422a239256b7d258a9d58d7d8b python main.py
+worker: python main.py
